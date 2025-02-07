@@ -18,8 +18,8 @@ public class RoleDeletedDomainEvent(
 
     public bool IsActive { get; private set; } = isActive;
 
-    public static RoleCreatedDomainEvent Create(Guid aggregateId, string name, string description, bool isActive)
+    public static RoleDeletedDomainEvent Create(Guid aggregateId, string name, string description, bool isActive)
     {
-        return new RoleCreatedDomainEvent(aggregateId, name, description, isActive);
+        return new RoleDeletedDomainEvent(aggregateId, name, description, isActive);
     }
 }

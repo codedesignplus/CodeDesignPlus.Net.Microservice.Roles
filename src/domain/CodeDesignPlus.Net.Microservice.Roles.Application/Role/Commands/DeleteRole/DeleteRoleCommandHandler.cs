@@ -12,8 +12,7 @@ public class DeleteRoleCommandHandler(IRoleRepository repository, IUserContext u
 
         aggregate.Delete(user.IdUser);
 
-        // TODO: Remove GUID Empty
-        await repository.DeleteAsync<RoleAggregate>(aggregate.Id, Guid.Empty, cancellationToken);
+        await repository.DeleteAsync<RoleAggregate>(aggregate.Id, cancellationToken);
 
         await pubsub.PublishAsync(aggregate.GetAndClearEvents(), cancellationToken);
     }

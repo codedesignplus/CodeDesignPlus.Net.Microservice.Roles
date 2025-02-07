@@ -31,4 +31,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\domain\CodeDesignPlus.Net.Microservice.Roles.Application\CodeDesignPlus.Net.Microservice.Roles.Application.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Role/DataTransferObjects/" />
+    <Folder Include="Role/Queries/" />
+  </ItemGroup>
 </Project>

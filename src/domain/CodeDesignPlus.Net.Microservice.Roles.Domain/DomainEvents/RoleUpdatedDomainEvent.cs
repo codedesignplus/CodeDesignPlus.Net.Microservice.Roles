@@ -18,8 +18,8 @@ public class RoleUpdatedDomainEvent(
 
     public bool IsActive { get; private set; } = isActive;
 
-    public static RoleCreatedDomainEvent Create(Guid aggregateId, string name, string description, bool isActive)
+    public static RoleUpdatedDomainEvent Create(Guid aggregateId, string name, string description, bool isActive)
     {
-        return new RoleCreatedDomainEvent(aggregateId, name, description, isActive);
+        return new RoleUpdatedDomainEvent(aggregateId, name, description, isActive);
     }
 }

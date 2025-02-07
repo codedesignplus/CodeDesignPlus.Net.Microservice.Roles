@@ -3,4 +3,6 @@ namespace CodeDesignPlus.Net.Microservice.Roles.Application.Role.DataTransferObj
 public class RoleDto: IDtoBase
 {
     public required Guid Id { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; }
 }
