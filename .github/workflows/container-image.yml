@@ -17,6 +17,6 @@ jobs:
   ci:
     uses: codedesignplus/workflows/.github/workflows/container-image.yaml@main
     with:
-      project-name: CodeDesignPlus.Net.Microservice
+      project-name: CodeDesignPlus.Net.Microservice.Roles
       microservice-name: ms-roles
     secrets: inherit
