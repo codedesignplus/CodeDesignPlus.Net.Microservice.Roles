@@ -33,8 +33,8 @@ public class GetRoleByIdQueryHandlerTest
         // Act & Assert
         var exception = await Assert.ThrowsAsync<CodeDesignPlusException>(() => handler.Handle(request, CancellationToken.None));
         
-        Assert.Equal(Errors.RoleNotFound.GetMessage(), exception.Message);
-        Assert.Equal(Errors.RoleNotFound.GetCode(), exception.Code);
+        Assert.Equal(Errors.InvalidRequest.GetMessage(), exception.Message);
+        Assert.Equal(Errors.InvalidRequest.GetCode(), exception.Code);
         Assert.Equal(Layer.Application, exception.Layer);
     }
 

@@ -36,6 +36,7 @@ builder.Services.AddMediatR<CodeDesignPlus.Net.Microservice.Roles.Application.St
 builder.Services.AddSecurity(builder.Configuration);
 builder.Services.AddResources<Program>(builder.Configuration);
 builder.Services.AddHealthChecksServices();
+builder.Services.AddCache(builder.Configuration);
 
 
 var app = builder.Build();
