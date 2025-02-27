@@ -37,6 +37,7 @@ builder.Services.AddSecurity(builder.Configuration);
 builder.Services.AddResources<Program>(builder.Configuration);
 builder.Services.AddHealthChecksServices();
 builder.Services.AddCache(builder.Configuration);
+builder.Services.AddCoreSwagger<Program>(builder.Configuration);
 
 
 var app = builder.Build();
