@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using CodeDesignPlus.Net.Core.Abstractions.Models.Pager;
 using CodeDesignPlus.Net.Microservice.Roles.Application.Role.Queries.GetAllRole;
 using CodeDesignPlus.Net.Microservice.Roles.Domain;
 using Moq;
@@ -54,17 +55,19 @@ public class GetAllRoleQueryHandlerTest
         var roles = new List<RoleAggregate> { roleAggregate };
         var roleDtos = new List<RoleDto> { dto };
 
+        var pagination = Pagination<RoleAggregate>.Create(roles, roles.Count(), 10, 0);
+
         repositoryMock
             .Setup(repo => repo.MatchingAsync<RoleAggregate>(request.Criteria, cancellationToken))
-            .ReturnsAsync(roles);
+            .ReturnsAsync(pagination);
         mapperMock
-            .Setup(mapper => mapper.Map<List<RoleDto>>(roles))
-            .Returns(roleDtos);
+            .Setup(mapper => mapper.Map<Pagination<RoleDto>>(pagination))
+            .Returns(Pagination<RoleDto>.Create(roleDtos, roleDtos.Count, 10, 0));
 
         // Act
         var result = await handler.Handle(request, cancellationToken);
 
         // Assert
-        Assert.Equal(roleDtos, result);
+        Assert.Equal(roleDtos, result.Data);
     }
 }

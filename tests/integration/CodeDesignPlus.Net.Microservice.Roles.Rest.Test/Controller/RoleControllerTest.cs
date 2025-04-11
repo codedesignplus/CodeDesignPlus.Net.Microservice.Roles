@@ -1,3 +1,5 @@
+using CodeDesignPlus.Net.Core.Abstractions.Models.Pager;
+
 namespace CodeDesignPlus.Net.Microservice.Roles.Rest.Test.Controller;
 
 public class RoleControllerTest : ServerBase<Program>, IClassFixture<Server<Program>>
@@ -29,11 +31,11 @@ public class RoleControllerTest : ServerBase<Program>, IClassFixture<Server<Prog
 
         var json = await response.Content.ReadAsStringAsync();
 
-        var Roles = JsonSerializer.Deserialize<IEnumerable<RoleDto>>(json);
+        var roles = JsonSerializer.Deserialize<Pagination<RoleDto>>(json);
 
-        Assert.NotNull(Roles);
-        Assert.NotEmpty(Roles);
-        Assert.Contains(Roles, x => x.Id == Role.Id);
+        Assert.NotNull(roles);
+        Assert.NotEmpty(roles.Data);
+        Assert.Contains(roles.Data, x => x.Id == Role.Id);
     }
 
     [Fact]

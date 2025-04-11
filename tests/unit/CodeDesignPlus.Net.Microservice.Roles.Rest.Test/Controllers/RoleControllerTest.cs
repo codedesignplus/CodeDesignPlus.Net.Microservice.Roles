@@ -12,6 +12,7 @@ using CodeDesignPlus.Net.Microservice.Roles.Application.Role.Queries.GetRoleById
 using CodeDesignPlus.Net.Microservice.Roles.Application.Role.Commands.CreateRole;
 using CodeDesignPlus.Net.Microservice.Roles.Application.Role.Commands.UpdateRole;
 using CodeDesignPlus.Net.Microservice.Roles.Application.Role.Commands.DeleteRole;
+using CodeDesignPlus.Net.Core.Abstractions.Models.Pager;
 
 namespace CodeDesignPlus.Net.Microservice.Roles.Rest.Test.Controllers;
 
@@ -35,15 +36,18 @@ public class RoleControllerTest
         var criteria = new C.Criteria();
         var roles = new List<RoleDto> {
             new() { Id = Guid.NewGuid(), Name = "Admin" }
-            };
-        mediatorMock.Setup(m => m.Send(It.IsAny<GetAllRoleQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(roles);
+        };
+
+        var pagination = new Pagination<RoleDto>(roles, roles.Count, 1, 0);
+        
+        mediatorMock.Setup(m => m.Send(It.IsAny<GetAllRoleQuery>(), It.IsAny<CancellationToken>())).ReturnsAsync(pagination);
 
         // Act
         var result = await controller.GetRoles(criteria, CancellationToken.None);
 
         // Assert
         var okResult = Assert.IsType<OkObjectResult>(result);
-        Assert.Equal(roles, okResult.Value);
+        Assert.Equal(pagination, okResult.Value);
     }
 
     [Fact]
