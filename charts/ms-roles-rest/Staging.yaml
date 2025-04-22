@@ -1,4 +1,5 @@
 ms-base:
+  environment: Staging
   replicaCount: 1
 
   image:
@@ -7,8 +8,8 @@ ms-base:
     tag: "v0.1.0-alpha.100"
 
   imagePullSecrets: []
-  fullnameOverride: "ms-roles"
-  nameOverride: "ms-roles"
+  fullnameOverride: "ms-roles-rest"
+  nameOverride: "ms-roles-rest"
 
   serviceAccount:
     create: true
@@ -105,6 +106,6 @@ ms-base:
         uri: /
       route:
       - destination:
-          host: ms-roles.default.svc.cluster.local
+          host: ms-roles-rest.default.svc.cluster.local
           port:
             number: 5000
