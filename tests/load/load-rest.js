@@ -7,7 +7,7 @@ const params = {
     headers: {
         'Content-Type': 'application/json',
         'X-Tenant': uuidv4(),
-        'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhTmsiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhNzRjYjE5Mi01OThjLTQ3NTctOTVhZS1iMzE1NzkzYmJiY2EiLCJpc3MiOiJodHRwczovL2NvZGVkZXNpZ25wbHVzLmIyY2xvZ2luLmNvbS8zNDYxZTMxMS1hNjZlLTQ2YWItYWZkZi0yYmJmYjcyYTVjYjAvdjIuMC8iLCJleHAiOjE3MzYzMDg1ODIsIm5iZiI6MTczNjMwNDk4Miwib2lkIjoiYzAzZjI4ZGEtMTI4Yy00Yzk3LThjZTgtMDAzNmFkY2U1YmU1Iiwic3ViIjoiYzAzZjI4ZGEtMTI4Yy00Yzk3LThjZTgtMDAzNmFkY2U1YmU1IiwiZmFtaWx5X25hbWUiOiJMaXNjYW5vIiwiY2l0eSI6IkJvZ290w6EiLCJwb3N0YWxDb2RlIjoiMTExNjExIiwic3RyZWV0QWRkcmVzcyI6IkNhbGxlIDNhICMgNTNjLTEzIiwic3RhdGUiOiJCb2dvdGEiLCJnaXZlbl9uYW1lIjoiV2lsem9uIiwibmFtZSI6IldpbHpvbiBMaXNjYW5vIiwiY291bnRyeSI6IkNvbG9tYmlhIiwiam9iVGl0bGUiOiJBcmNoaXRlY2giLCJlbWFpbHMiOlsiY29kZWRlc2lnbnBsdXNAb3V0bG9vay5jb20iXSwidGZwIjoiQjJDXzFfQ29kZURlc2VpZ25QbHVzIiwic2NwIjoicmVhZCIsImF6cCI6ImE3NGNiMTkyLTU5OGMtNDc1Ny05NWFlLWIzMTU3OTNiYmJjYSIsInZlciI6IjEuMCIsImlhdCI6MTczNjMwNDk4Mn0.sI-xBgZEBL_1wlbGvXndYPljtL--4qw6225cUHqgR_ZDpbaiuok55wSRtI9t95mh105DwjMQLBIykyoT-Pn0VEyAvGproeBExiLNE49bM0-yIRQQs_4Bkt1hQAcgOizMRMOzeMVp_cNkxNoDKzinl8939deV8WXbr-HP2hQRzn9eY_odbhfyBKl5EclUTfePXhZszsn8lYs5oxpdWSyD5MvBrXySu-0bV2Q9Tmi6NNfcnRLZ36qQPoQfoSt0ETBFOj1iICpp4767xb5Zd4b4bVkKcuXB1F0sBLNKjDRb-yeRxVNepUDrLflb2zymSQw6u8dZXxnOWSspGmnejpXg6A'
+        'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZ1YXlxbkNRb0F2OWRCMHMxTjJPSTlZUkFMeElVQlg1bGtReHZxall1VVUiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhZTViZDQ5Mi1hOWE4LTQ0NjItOTE1My1hNzFmOTYwZWQyNjkiLCJpc3MiOiJodHRwczovL2NvZGVkZXNpZ25wbHVzZGV2ZWxvcG1lbnQuYjJjbG9naW4uY29tL2ZiMjNkM2U4LTdkZTctNDU1NC05ZDczLTc4ZTk5MDRhMjQzZi92Mi4wLyIsImV4cCI6MTc0ODk5MTgxOCwibmJmIjoxNzQ4OTg4MjE4LCJzdWIiOiI0N2JiZDcyMi1lMGI3LTQzMGUtYWViMi02MGM1ZjE4Yjg5ZWIiLCJvaWQiOiI0N2JiZDcyMi1lMGI3LTQzMGUtYWViMi02MGM1ZjE4Yjg5ZWIiLCJuYW1lIjoiV2lsem9uIExpc2Nhbm8iLCJnaXZlbl9uYW1lIjoiV2lsem9uIiwiZmFtaWx5X25hbWUiOiJMaXNjYW5vIiwidGlkIjoiZmIyM2QzZTgtN2RlNy00NTU0LTlkNzMtNzhlOTkwNGEyNDNmIiwibm9uY2UiOiIzYTgwMTk5ODY5NDQ5ZTM0ZDcxM2M4MjhhOWQ3MTYxZTM2d1BoWU9pcyIsInNjcCI6InJlYWQiLCJhenAiOiJhZTViZDQ5Mi1hOWE4LTQ0NjItOTE1My1hNzFmOTYwZWQyNjkiLCJ2ZXIiOiIxLjAiLCJpYXQiOjE3NDg5ODgyMTh9.LLKymxWcfR1SdpqB1nLxokXSujJz6pzU4nRk6jXxuUhDuRY3PexBA_3wcYpnipUFEEs5eu2WzfA0nS4C63LriL1VtsW7V1kUe73ggnpGTKdoHYDpg7pFiwiMXzMd-HKldNtw3siJpzg1SWHi5-e6Iv85-aGAQugym0ydJyu5NqMKjFbpm-3aUbz21hig9jKqNTkVxjFKygsZs0BDvlIkSYbkIqVydswcPXq3GVZlFGT-agYRxdbnAwmRGeuLcLlZlmSUqtYDvmrNYtud6DXs23f91Li8ythDiAocArT5zr6TCUEjtIbcL97bQvMYOqsSmVEz2X0JHZ-faOAPJRMacQ'
     },
 };
 
@@ -19,13 +19,13 @@ export const options = {
             duration: '600s',
 
             // How many iterations per timeUnit
-            rate: 10,
+            rate: 50,
 
             // Start `rate` iterations per second
             timeUnit: '1s',
 
             // Pre-allocate 2 VUs before starting the test
-            preAllocatedVUs: 3,
+            preAllocatedVUs: 100,
 
             // Spin up a maximum of 50 VUs to sustain the defined
             // constant arrival rate.
@@ -38,22 +38,11 @@ export default async function () {
 
     const order = JSON.stringify({
         "id": uuidv4(),
-        "client": {
-            "id": uuidv4(),
-            "name": `Client ${randomIntBetween(1, 1000)}`,            
-            "document": `${randomIntBetween(1, 2123123)}`,
-            "typeDocument": "CC"
-        },
-        "address": {
-          "country": "Colombia",
-          "state": "Bogotá",
-          "city": "Bogotá",
-          "address": "Calle siempre viva",
-          "codePostal": 111611
-        }
+        "name": `Role ${randomIntBetween(1, 1000)}`,
+        "description": `Description for role ${randomIntBetween(1, 1_000_000)}`,
     });
 
-    let response = await http.asyncRequest('POST', 'http://localhost:5175/api/orders', order, params);
+    let response = await http.asyncRequest('POST', 'https://services.codedesignplus.com/ms-roles/api/role', order, params);
 
     check(response, {
         'is status 204': (r) => r.status === 204,
