@@ -46,9 +46,10 @@ public class RoleAggregate(Guid id) : AggregateRootBase(id)
     {
         DomainGuard.GuidIsEmpty(deletedBy, Errors.CreatedByIsInvalid);
 
+        this.IsDeleted = true;
         this.IsActive = false;
-        this.UpdatedAt = SystemClock.Instance.GetCurrentInstant();
-        this.UpdatedBy = deletedBy;
+        this.DeletedAt = SystemClock.Instance.GetCurrentInstant();
+        this.DeletedBy = deletedBy;
 
         AddEvent(RoleDeletedDomainEvent.Create(Id, Name, Description, IsActive));
     }

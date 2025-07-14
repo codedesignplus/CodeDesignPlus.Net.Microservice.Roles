@@ -82,7 +82,7 @@ public class RoleAggregateTest
 
         // Assert
         Assert.False(role.IsActive);
-        Assert.Equal(deletedBy, role.UpdatedBy);
+        Assert.Equal(deletedBy, role.DeletedBy);
 
         Assert.NotNull(domainEvent);
         Assert.Equal(id, domainEvent.AggregateId);
