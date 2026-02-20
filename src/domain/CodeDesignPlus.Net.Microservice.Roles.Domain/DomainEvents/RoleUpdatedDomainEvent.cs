@@ -1,6 +1,6 @@
 namespace CodeDesignPlus.Net.Microservice.Roles.Domain.DomainEvents;
 
-[EventKey<RoleAggregate>(1, "RoleUpdatedDomainEvent")]
+[EventKey<RoleAggregate>(1, "RoleUpdatedDomainEvent", autoCreate: false)]
 public class RoleUpdatedDomainEvent(
     Guid aggregateId,
     string name,
