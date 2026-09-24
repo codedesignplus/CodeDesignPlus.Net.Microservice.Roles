@@ -1,0 +1,9 @@
+{
+  "language": "en",
+  "errors": {
+    "200": "UnknownError",
+    "201": "The request is invalid.",
+    "202": "The role already exists.",
+    "203": "The role not found."
+  }
+}
