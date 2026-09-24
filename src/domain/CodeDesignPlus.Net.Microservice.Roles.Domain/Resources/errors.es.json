@@ -1,10 +1,10 @@
 {
   "language": "es",
   "errors": {
-    "100": "",
-    "101": "",
-    "102": "",
-    "103": "",
-    "104": ""
+    "100": "Error desconocido.",
+    "101": "El identificador del rol no es válido.",
+    "102": "El nombre del rol no es válido.",
+    "103": "La descripción del rol no es válida.",
+    "104": "El identificador de quien crea no es válido."
   }
 }

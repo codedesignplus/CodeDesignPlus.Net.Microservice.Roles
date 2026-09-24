@@ -1,9 +1,9 @@
 {
   "language": "es",
   "errors": {
-    "200": "",
-    "201": "",
-    "202": "",
-    "203": ""
+    "200": "Error desconocido.",
+    "201": "La petición no es válida.",
+    "202": "El usuario ya tiene ese rol.",
+    "203": "No encontramos ese rol."
   }
 }

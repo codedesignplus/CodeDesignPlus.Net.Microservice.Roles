@@ -1,0 +1,10 @@
+{
+  "language": "pt",
+  "errors": {
+    "100": "Erro desconhecido.",
+    "101": "O identificador do papel não é válido.",
+    "102": "O nome do papel não é válido.",
+    "103": "A descrição do papel não é válida.",
+    "104": "O identificador de quem cria não é válido."
+  }
+}

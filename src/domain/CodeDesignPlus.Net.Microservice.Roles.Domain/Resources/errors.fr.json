@@ -1,0 +1,10 @@
+{
+  "language": "fr",
+  "errors": {
+    "100": "Erreur inconnue.",
+    "101": "L'identifiant du rôle n'est pas valide.",
+    "102": "Le nom du rôle n'est pas valide.",
+    "103": "La description du rôle n'est pas valide.",
+    "104": "L'identifiant du créateur n'est pas valide."
+  }
+}
