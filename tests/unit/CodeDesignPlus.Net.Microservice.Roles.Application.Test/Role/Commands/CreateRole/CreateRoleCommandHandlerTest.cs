@@ -38,7 +38,7 @@ public class CreateRoleCommandHandlerTest
     }
 
     [Fact]
-    public async Task Handle_RoleAlreadyExists_ThrowsRoleAlreadyExistsException()
+    public async Task Handle_RoleAlreadyExists_IsTheRetryAndDoesNotCreateItAgain()
     {
         // Arrange
         var request = new CreateRoleCommand(Guid.NewGuid(), "Admin", "Administrator role");
@@ -46,12 +46,11 @@ public class CreateRoleCommandHandlerTest
 
         repositoryMock.Setup(repo => repo.ExistsAsync<RoleAggregate>(request.Id, cancellationToken)).ReturnsAsync(true);
 
-        // Act & Assert
-        var exception = await Assert.ThrowsAsync<CodeDesignPlusException>(() => handler.Handle(request, cancellationToken));
+        // Act: el mismo id es el reintento del mismo formulario (pendings/589, regla 66), no un error.
+        await handler.Handle(request, cancellationToken);
 
-        Assert.Equal(Errors.RoleAlreadyExists.GetMessage(), exception.Message);
-        Assert.Equal(Errors.RoleAlreadyExists.GetCode(), exception.Code);
-        Assert.Equal(Layer.Application, exception.Layer);
+        // Assert
+        repositoryMock.Verify(x => x.CreateIfAbsentAsync(It.IsAny<RoleAggregate>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 
     [Fact]
@@ -68,7 +67,7 @@ public class CreateRoleCommandHandlerTest
         await handler.Handle(request, cancellationToken);
 
         // Assert
-        repositoryMock.Verify(repo => repo.CreateAsync(It.IsAny<RoleAggregate>(), cancellationToken), Times.Once);
+        repositoryMock.Verify(repo => repo.CreateIfAbsentAsync(It.IsAny<RoleAggregate>(), cancellationToken), Times.Once);
         pubSubMock.Verify(pubsub => pubsub.PublishAsync(It.IsAny<List<RoleCreatedDomainEvent>>(), cancellationToken), Times.AtMostOnce);
     }
 }
