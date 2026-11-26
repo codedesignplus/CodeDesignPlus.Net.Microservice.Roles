@@ -1,3 +1,6 @@
+using CodeDesignPlus.Net.Core.Abstractions.Models.Pager;
+using CodeDesignPlus.Net.Microservice.Roles.Application.Role.DataTransferObjects;
+
 namespace CodeDesignPlus.Net.Microservice.Roles.Rest.Controllers;
 
 /// <summary>
@@ -16,6 +19,7 @@ public class RoleController(IMediator mediator, IMapper mapper) : ControllerBase
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>Collection of Roles.</returns>
     [HttpGet]
+    [ProducesResponseType<Pagination<RoleDto>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRoles([FromQuery] C.Criteria criteria, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetAllRoleQuery(criteria), cancellationToken);
@@ -30,6 +34,7 @@ public class RoleController(IMediator mediator, IMapper mapper) : ControllerBase
     /// <param name="cancellationToken">Cancellation token.</param>
     /// <returns>The Role.</returns>
     [HttpGet("{id}")]
+    [ProducesResponseType<RoleDto>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetRoleById(Guid id, CancellationToken cancellationToken)
     {
         var result = await mediator.Send(new GetRoleByIdQuery(id), cancellationToken);
